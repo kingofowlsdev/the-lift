@@ -77,7 +77,7 @@ function drunkard_walk_clear_region(_x1, _y1, _x2, _y2, _iters = 10, _steps = 20
             var dir = choose(0, 90, 180, 270);
             
             var cell_x_new, cell_y_new; 
-            {
+            /*do*/ {
                 cell_x_new = cell_x + lengthdir_x(global.__frunkard_walk_step, dir);
                 cell_y_new = cell_y + lengthdir_y(global.__frunkard_walk_step, dir);
             } //until(cell_x_new == clamp(cell_x_new, _x1, _x2) && cell_y_new == clamp(cell_y_new, _y1, _y2)); 
