@@ -1,5 +1,5 @@
-global.__bsp_min_w = 20; 
-global.__bsp_min_h = 20; 
+global.__bsp_min_w = 24; 
+global.__bsp_min_h = 15; 
 global.__bsp_spread_v = 10; 
 global.__bsp_spread_h = 10; 
 global.__bsp_array = []; 
@@ -71,8 +71,7 @@ function drunkard_walk_clear_region(_x1, _y1, _x2, _y2, _iters = 10, _steps = 20
         var cell_y = (_y1 + (_y2 - _y1) div 2); 
         
         repeat(_steps) {
-            tilemap_set(COLMAP_TILEMAP, 0, cell_x, cell_y); 
-            tilemap_clear_circle(cell_x, cell_y); 
+            colmap_clear_circle(cell_x, cell_y); 
             
             var dir = choose(0, 90, 180, 270);
             
@@ -88,22 +87,23 @@ function drunkard_walk_clear_region(_x1, _y1, _x2, _y2, _iters = 10, _steps = 20
     }
 }
 
-function tilemal_clear_line(_x1, _x2, _y) {
+function colmap_clear_line(_x1, _x2, _y) {
     for(var i = _x1; i < _x2; i ++) {
         tilemap_set(COLMAP_TILEMAP, 0, i, _y); 
     }
 }
 
-function tilemap_clear_circle(_cx, _cy, _radius = 3) {
+// Bresenham's algorithm
+function colmap_clear_circle(_cx, _cy, _radius = 4) {
     var _x = 0; 
     var _y = _radius; 
     var d = 3 - 2 * _radius; 
 
     while(_x <= _y) {
-        tilemal_clear_line(_cx - _x, _cx + _x, _cy + _y);
-        tilemal_clear_line(_cx - _x, _cx + _x, _cy - _y);
-        tilemal_clear_line(_cx - _y, _cx + _y, _cy + _x);
-        tilemal_clear_line(_cx - _y, _cx + _y, _cy - _x);
+        colmap_clear_line(_cx - _x, _cx + _x, _cy + _y);
+        colmap_clear_line(_cx - _x, _cx + _x, _cy - _y);
+        colmap_clear_line(_cx - _y, _cx + _y, _cy + _x);
+        colmap_clear_line(_cx - _y, _cx + _y, _cy - _x);
         
         if (d > 0) { 
             d = d + 4 * (_x - _y) + 10; 
