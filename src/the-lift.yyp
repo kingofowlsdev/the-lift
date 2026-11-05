@@ -22,6 +22,7 @@
     {"id":{"name":"obj_lvl_gen_test","path":"objects/obj_lvl_gen_test/obj_lvl_gen_test.yy",},},
     {"id":{"name":"rm_lvl_gen_test","path":"rooms/rm_lvl_gen_test/rm_lvl_gen_test.yy",},},
     {"id":{"name":"scr_lvl_gen_test","path":"scripts/scr_lvl_gen_test/scr_lvl_gen_test.yy",},},
+    {"id":{"name":"scr_world_tiles_params","path":"scripts/scr_world_tiles_params/scr_world_tiles_params.yy",},},
     {"id":{"name":"spr_lvl_gen_tileset_test","path":"sprites/spr_lvl_gen_tileset_test/spr_lvl_gen_tileset_test.yy",},},
     {"id":{"name":"tst_lvl_gen_test","path":"tilesets/tst_lvl_gen_test/tst_lvl_gen_test.yy",},},
   ],

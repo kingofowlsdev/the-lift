@@ -10,7 +10,7 @@
   ],
   "isDnd":false,
   "layers":[
-    {"$GMRTileLayer":"","%Name":"CollisionTiles","depth":0,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"CollisionTiles","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":34,"SerialiseWidth":60,"TileCompressedData":[
+    {"$GMRTileLayer":"","%Name":"TileCollisionMap","depth":0,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"TileCollisionMap","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":34,"SerialiseWidth":60,"TileCompressedData":[
           -15,0,-45,-2147483648,1,0,-13,-2147483648,1,0,-45,-2147483648,1,0,-12,-2147483648,-2,0,-45,-2147483648,
           1,0,-12,-2147483648,-2,0,-45,-2147483648,1,0,-11,-2147483648,-3,0,-45,-2147483648,1,0,-11,-2147483648,
           -3,0,-45,-2147483648,-3,0,-10,-2147483648,-2,0,-45,-2147483648,-15,0,-45,-2147483648,-15,0,-1545,-2147483648,

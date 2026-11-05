@@ -1,7 +1,7 @@
-global.__bsp_min_w = 9; 
-global.__bsp_min_h = 9; 
-global.__bsp_spread_h = 5; 
-global.__bsp_spread_v = 10; 
+global.__bsp_min_w = 3; 
+global.__bsp_min_h = 3; 
+global.__bsp_spread_v = 2; 
+global.__bsp_spread_h = 2; 
 global.__bsp_array = []; 
 
 enum BSP_SPLIT {
@@ -28,7 +28,7 @@ function BSP_Node(_x1, _y1, _x2, _y2, _split_type = BSP_SPLIT.HORIZONTAL) constr
     }
     
     static split_h = function() {
-        var middle = y1 + ((y2 - y1) div 2) + irandom_range(-global.__bsp_spread_h, global.__bsp_spread_h); 
+        var middle = y1 + ((y2 - y1) div 2) + irandom_range(-global.__bsp_spread_v, global.__bsp_spread_v); 
         
         // if the size of the new room is smaller than the minimal one, we break the recurstion 
         if (((middle - y1) < global.__bsp_min_h) || ((y2 - middle - 1) < global.__bsp_min_h)) {
@@ -40,7 +40,7 @@ function BSP_Node(_x1, _y1, _x2, _y2, _split_type = BSP_SPLIT.HORIZONTAL) constr
     }
     
     static split_v = function() {
-        var center = x1 + ((x2 - x1) div 2) + irandom_range(-global.__bsp_spread_v, global.__bsp_spread_v); 
+        var center = x1 + ((x2 - x1) div 2) + irandom_range(-global.__bsp_spread_h, global.__bsp_spread_h); 
         
         if (((center - x1) < global.__bsp_min_w) || ((x2 - center - 1) < global.__bsp_min_w)) {
             exit; 
@@ -51,7 +51,7 @@ function BSP_Node(_x1, _y1, _x2, _y2, _split_type = BSP_SPLIT.HORIZONTAL) constr
     }
     
     static draw = function() {
-        var s = 8; 
+        var s = COLMAP_TILE_SIZE; 
         draw_rectangle(x1 * s, y1 * s, x2 * s, y2 * s, true); 
     }
 }
