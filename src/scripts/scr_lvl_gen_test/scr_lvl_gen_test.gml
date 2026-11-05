@@ -1,7 +1,7 @@
-global.__bsp_min_w = 3; 
-global.__bsp_min_h = 3; 
-global.__bsp_spread_v = 2; 
-global.__bsp_spread_h = 2; 
+global.__bsp_min_w = 20; 
+global.__bsp_min_h = 20; 
+global.__bsp_spread_v = 10; 
+global.__bsp_spread_h = 10; 
 global.__bsp_array = []; 
 
 enum BSP_SPLIT {
@@ -30,8 +30,9 @@ function BSP_Node(_x1, _y1, _x2, _y2, _split_type = BSP_SPLIT.HORIZONTAL) constr
     static split_h = function() {
         var middle = y1 + ((y2 - y1) div 2) + irandom_range(-global.__bsp_spread_v, global.__bsp_spread_v); 
         
-        // if the size of the new room is smaller than the minimal one, we break the recurstion 
+        // if the size of the new room is smaller than the minimal one, we clear the region and break the recurstion 
         if (((middle - y1) < global.__bsp_min_h) || ((y2 - middle - 1) < global.__bsp_min_h)) {
+            drunkard_walk_clear_region(x1, y1, x2, y2); 
             exit; 
         }
         
@@ -43,6 +44,7 @@ function BSP_Node(_x1, _y1, _x2, _y2, _split_type = BSP_SPLIT.HORIZONTAL) constr
         var center = x1 + ((x2 - x1) div 2) + irandom_range(-global.__bsp_spread_h, global.__bsp_spread_h); 
         
         if (((center - x1) < global.__bsp_min_w) || ((x2 - center - 1) < global.__bsp_min_w)) {
+            drunkard_walk_clear_region(x1, y1, x2, y2); 
             exit; 
         }
         
@@ -59,5 +61,57 @@ function BSP_Node(_x1, _y1, _x2, _y2, _split_type = BSP_SPLIT.HORIZONTAL) constr
 function BSP_Draw() {
     for(var i = 0; i < array_length(global.__bsp_array); i ++) {
         global.__bsp_array[i].draw(); 
+    }
+}
+
+global.__frunkard_walk_step = 3; 
+function drunkard_walk_clear_region(_x1, _y1, _x2, _y2, _iters = 10, _steps = 20) {
+    repeat(_iters) {
+        var cell_x = (_x1 + (_x2 - _x1) div 2);
+        var cell_y = (_y1 + (_y2 - _y1) div 2); 
+        
+        repeat(_steps) {
+            tilemap_set(COLMAP_TILEMAP, 0, cell_x, cell_y); 
+            tilemap_clear_circle(cell_x, cell_y); 
+            
+            var dir = choose(0, 90, 180, 270);
+            
+            var cell_x_new, cell_y_new; 
+            {
+                cell_x_new = cell_x + lengthdir_x(global.__frunkard_walk_step, dir);
+                cell_y_new = cell_y + lengthdir_y(global.__frunkard_walk_step, dir);
+            } //until(cell_x_new == clamp(cell_x_new, _x1, _x2) && cell_y_new == clamp(cell_y_new, _y1, _y2)); 
+            
+            cell_x = cell_x_new;
+            cell_y = cell_y_new; 
+        }
+    }
+}
+
+function tilemal_clear_line(_x1, _x2, _y) {
+    for(var i = _x1; i < _x2; i ++) {
+        tilemap_set(COLMAP_TILEMAP, 0, i, _y); 
+    }
+}
+
+function tilemap_clear_circle(_cx, _cy, _radius = 3) {
+    var _x = 0; 
+    var _y = _radius; 
+    var d = 3 - 2 * _radius; 
+
+    while(_x <= _y) {
+        tilemal_clear_line(_cx - _x, _cx + _x, _cy + _y);
+        tilemal_clear_line(_cx - _x, _cx + _x, _cy - _y);
+        tilemal_clear_line(_cx - _y, _cx + _y, _cy + _x);
+        tilemal_clear_line(_cx - _y, _cx + _y, _cy - _x);
+        
+        if (d > 0) { 
+            d = d + 4 * (_x - _y) + 10; 
+            _y --; 
+        } else {
+            d = d + 4 * _x + 6; 
+        }
+        
+        _x ++; 
     }
 }
