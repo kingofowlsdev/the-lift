@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_lvl_gen_test",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_lvl_gen_test",
+  "parent":{
+    "name":"the-lift",
+    "path":"the-lift.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
