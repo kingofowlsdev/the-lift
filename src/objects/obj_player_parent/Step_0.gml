@@ -1,6 +1,11 @@
 var hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 var ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
+var len = sqr(hor * hor + ver * ver);
 
+if (len != 0){
+    hor /= len;
+    ver /= len;
+}
 x += hor * sp;
 y += ver * sp;
 

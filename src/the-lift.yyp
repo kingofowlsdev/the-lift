@@ -25,9 +25,9 @@
   },
   "name":"the-lift",
   "resources":[
-    {"id":{"name":"obj_bullet_P","path":"objects/obj_bullet_P/obj_bullet_P.yy",},},
+    {"id":{"name":"obj_bullet_parent","path":"objects/obj_bullet_parent/obj_bullet_parent.yy",},},
     {"id":{"name":"obj_lvl_gen_test","path":"objects/obj_lvl_gen_test/obj_lvl_gen_test.yy",},},
-    {"id":{"name":"obj_player_P","path":"objects/obj_player_P/obj_player_P.yy",},},
+    {"id":{"name":"obj_player_parent","path":"objects/obj_player_parent/obj_player_parent.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"rm_lvl_gen_test","path":"rooms/rm_lvl_gen_test/rm_lvl_gen_test.yy",},},
     {"id":{"name":"scr_lvl_gen_test","path":"scripts/scr_lvl_gen_test/scr_lvl_gen_test.yy",},},
