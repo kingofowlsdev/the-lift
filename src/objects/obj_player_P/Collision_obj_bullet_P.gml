@@ -1,2 +1,1 @@
-take_damage(other.damage);
-instance_destroy(other);
+take_damage(other.damage, other);
