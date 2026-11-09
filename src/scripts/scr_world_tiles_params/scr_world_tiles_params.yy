@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_world_tiles_params",
   "parent":{
-    "name":"the-lift",
-    "path":"the-lift.yyp",
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
