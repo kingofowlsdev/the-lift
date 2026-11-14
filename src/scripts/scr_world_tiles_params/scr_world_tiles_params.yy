@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_world_tiles_params",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_world_tiles_params",
+  "parent":{
+    "name":"the-lift",
+    "path":"the-lift.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
