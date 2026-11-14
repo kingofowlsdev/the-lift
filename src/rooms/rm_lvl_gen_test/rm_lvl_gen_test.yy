@@ -23,8 +23,8 @@
   ],
   "name":"rm_lvl_gen_test",
   "parent":{
-    "name":"the-lift",
-    "path":"the-lift.yyp",
+    "name":"Rooms",
+    "path":"folders/Rooms.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

@@ -12,8 +12,8 @@
   "out_tilehborder":2,
   "out_tilevborder":2,
   "parent":{
-    "name":"the-lift",
-    "path":"the-lift.yyp",
+    "name":"Sprites",
+    "path":"folders/Sprites.yy",
   },
   "resourceType":"GMTileSet",
   "resourceVersion":"2.0",
