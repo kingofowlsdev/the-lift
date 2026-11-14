@@ -1,3 +1,0 @@
-randomize(); 
-
-level_generate(); 
