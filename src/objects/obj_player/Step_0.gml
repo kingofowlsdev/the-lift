@@ -7,8 +7,11 @@ if (len > 0) {
     axis_y /= len; 
 }
 
-hsp = axis_x * spd; 
-vsp = axis_y * spd; 
+var is_moving = (axis_x != 0) || (axis_y != 0);
+var spd_amt = is_moving ? accel_amt : decell_amt; 
+
+hsp = lerp(hsp, axis_x * spd, spd_amt); 
+vsp = lerp(vsp, axis_y * spd, spd_amt); 
 
 x += hsp; 
 y += vsp; 
