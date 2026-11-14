@@ -1,0 +1,3 @@
+randomize(); 
+
+level_generate(); 
