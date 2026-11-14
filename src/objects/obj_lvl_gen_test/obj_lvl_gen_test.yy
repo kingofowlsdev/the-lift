@@ -9,8 +9,8 @@
   "name":"obj_lvl_gen_test",
   "overriddenProperties":[],
   "parent":{
-    "name":"the-lift",
-    "path":"the-lift.yyp",
+    "name":"Objects",
+    "path":"folders/Objects.yy",
   },
   "parentObjectId":null,
   "persistent":false,
