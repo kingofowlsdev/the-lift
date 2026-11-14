@@ -8,10 +8,13 @@ if (len > 0) {
 }
 
 var is_moving = (axis_x != 0) || (axis_y != 0);
-var spd_amt = is_moving ? accel_amt : decell_amt; 
+var move_spd_amt = is_moving ? move_accel_amt : move_decell_amt; 
 
-hsp = lerp(hsp, axis_x * spd, spd_amt); 
-vsp = lerp(vsp, axis_y * spd, spd_amt); 
+move_hsp = lerp(move_hsp, axis_x * move_spd, move_spd_amt); 
+move_vsp = lerp(move_vsp, axis_y * move_spd, move_spd_amt); 
+
+hsp += move_hsp; 
+vsp += move_vsp; 
 
 var solid_stuffs = [COLMAP_TILEMAP]; 
 if (place_meeting(x + hsp, y, solid_stuffs)) {
@@ -33,3 +36,7 @@ if (place_meeting(x, y + vsp, solid_stuffs)) {
 }
 
 y += vsp; 
+
+// resets resultant vector value 
+hsp = 0; 
+vsp = 0; 
