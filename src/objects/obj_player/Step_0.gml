@@ -48,8 +48,8 @@ if (dash_spd > 0) {
 
 #region Resultant vector. 
 
-hsp += move_hsp + dash_hsp; 
-vsp += move_vsp + dash_vsp; 
+hsp = move_hsp + dash_hsp; 
+vsp = move_vsp + dash_vsp; 
 
 #endregion 
 
@@ -87,7 +87,3 @@ if (place_meeting(x, y + vsp, solid_stuffs)) {
 y += vsp; 
 
 #endregion 
-
-// resets resultant vector value 
-hsp = 0; 
-vsp = 0; 
