@@ -45,6 +45,10 @@ knockback_spd = 0;
 
 knockback_decell = 0.7; 
 
+flash_intensity_max = 1.5; 
+flash_intensity = 0; 
+flash_fade_spd = 0.1; 
+
 iframes_time = 30; 
 iframes_timer = 60; 
 
@@ -63,6 +67,8 @@ get_damage = function(_damage, _dir = point_direction(other.x, other.y, x, y)) {
     
     knockback_dir = _dir; 
     knockback_spd = knockback_spd_max; 
+    
+    flash_intensity = flash_intensity_max; 
     
     return true; 
 }
