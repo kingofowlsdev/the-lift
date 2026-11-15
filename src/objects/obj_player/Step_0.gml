@@ -46,10 +46,20 @@ if (dash_spd > 0) {
 
 #endregion 
 
+#region Health and knockback. 
+
+iframes_timer --; 
+
+knockback_spd = max(0, knockback_spd - knockback_decell); 
+knockback_hsp = lengthdir_x(knockback_spd, knockback_dir);
+knockback_vsp = lengthdir_y(knockback_spd, knockback_dir);
+
+#endregion 
+
 #region Resultant vector. 
 
-hsp = move_hsp + dash_hsp; 
-vsp = move_vsp + dash_vsp; 
+hsp = move_hsp + dash_hsp + knockback_hsp; 
+vsp = move_vsp + dash_vsp + knockback_vsp; 
 
 #endregion 
 
@@ -67,6 +77,7 @@ if (place_meeting(x + hsp, y, solid_stuffs)) {
     
     dash_spd = 0; 
     dash_hsp = 0; 
+    knockback_hsp = 0; 
 }
 
 x += hsp; 
@@ -82,6 +93,7 @@ if (place_meeting(x, y + vsp, solid_stuffs)) {
     
     dash_spd = 0; 
     dash_vsp = 0; 
+    knockback_vsp = 0; 
 }
 
 y += vsp; 
