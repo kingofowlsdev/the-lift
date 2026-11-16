@@ -87,3 +87,67 @@ if (place_meeting(x, y + vsp, solid_stuffs)) {
 y += vsp; 
 
 #endregion 
+
+#region Inventory
+
+global.select_cell = clamp(global.select_cell, 0, global.max_cells - 1);
+
+var cell_switch = keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left);
+
+global.select_cell += cell_switch;
+
+body_select_cell = clamp(body_select_cell, 0, body_max_cells - 1);
+
+if (keyboard_check_pressed(ord("P"))) {
+    body_inv_isActive = !body_inv_isActive;
+}
+
+var cell_switch_body = keyboard_check_pressed(vk_down) - keyboard_check_pressed(vk_up);
+
+body_select_cell += cell_switch_body;
+
+var item = instance_nearest(x, y, obj_item_parent);
+
+if (distance_to_object(item) <= global.pickup_distance) and (keyboard_check_pressed(ord("E"))) {
+    if (item.inv == INVENTORY.BASIC) {
+        for (var i = 0; i < global.max_cells; i++) {
+            if (global.inv[i] == 0) {
+                global.inv[i] = new Item(item.name, item.sprite_index, item.count, item.max_count, item.passive_bonus, item.object_index);
+                instance_destroy(item);
+                exit;
+            }
+            else{ 
+                if (is_struct(global.inv[i])) && (global.inv[i].name == item.name) && (global.inv[i].count + item.count <= global.inv[i].max_count){
+                    global.inv[i].count += item.count;
+                    instance_destroy(item);
+                    exit;
+                }
+            }
+        }
+    }
+    
+    if (item.inv == INVENTORY.BODY) && (body_inv[item.inv_cell] == 0) {
+        body_inv[item.inv_cell] = new Item(item.name, item.sprite_index, item.count, item.max_count, item.passive_bonus, item.object_index);
+        instance_destroy(item);
+    }
+}
+
+if (keyboard_check_pressed(ord("Q"))) {
+    if (body_inv_isActive == 0) {
+        if (is_struct(global.inv[global.select_cell])) {
+            instance_create_depth(x, y, 0, global.inv[global.select_cell].obj);
+            global.inv[global.select_cell].count--;
+            if (global.inv[global.select_cell].count <= 0) {
+                global.inv[global.select_cell] = 0;
+            }
+        }
+    }
+    else {
+        if (is_struct(body_inv[body_select_cell])) {
+            instance_create_depth(x, y, 0, body_inv[body_select_cell].obj);
+            body_inv[body_select_cell] = 0;
+        }
+    }
+}
+
+#endregion
